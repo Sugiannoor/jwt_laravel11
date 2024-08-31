@@ -9,7 +9,7 @@ Route::group([
 ], function ($router) {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/test', [AuthController::class, 'test'])->middleware(['role:user']);
+    Route::get('/test', [AuthController::class, 'test'])->middleware(['auth:api','role:user,admin']);
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth:api');
     Route::post('/profile', [AuthController::class, 'profile'])->middleware('auth:api');
